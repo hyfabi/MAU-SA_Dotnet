@@ -25,6 +25,11 @@ namespace Grasmaster.Controllers
 			return View();
 		}
 
+		public IActionResult UserService()
+		{
+			return View();
+		}
+
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{

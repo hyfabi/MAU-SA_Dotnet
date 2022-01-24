@@ -10,7 +10,6 @@ builder.Services.AddControllersWithViews();
 //Add dbContext
 builder.Services.AddDbContext<ApplicationContext>();
 
-
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.

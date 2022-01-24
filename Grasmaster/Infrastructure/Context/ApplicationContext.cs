@@ -1,7 +1,6 @@
 ﻿using Grasmaster.Infrastructure.Models;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Grasmaster.Infrastructure.Context
 {
