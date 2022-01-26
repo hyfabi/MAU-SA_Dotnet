@@ -2,11 +2,14 @@
 
 namespace Grasmaster.Infrastructure.Models
 {
-	public abstract class Person
+	public abstract class Person : Entity
 	{
-		[Key]
-		[Required]
-		public ulong Id { get; set; }
-		public string Name { get; set; } = default!;
+        [Required]
+        public string Name { get; set; } = "";
+
+        protected Person(Guid? guid, string name) : base(guid)
+        {
+            Name = name;
+        }
 	}
 }

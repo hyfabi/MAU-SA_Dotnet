@@ -1,6 +1,8 @@
 using Grasmaster.Infrastructure.Context;
 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +10,8 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Add dbContext
-builder.Services.AddDbContext<ApplicationContext>();
+string connString = builder.Configuration.GetConnectionString("MainConn");
+builder.Services.AddDbContext<ApplicationContext>(options=> { options.UseSqlServer(connString); });
 
 WebApplication app = builder.Build();
 
