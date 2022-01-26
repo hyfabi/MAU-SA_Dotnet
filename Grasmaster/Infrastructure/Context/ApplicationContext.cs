@@ -18,6 +18,9 @@ namespace Grasmaster.Infrastructure.Context
 			}
 		}
 
+		public ApplicationContext(DbContextOptions dbContextOptions) : base (dbContextOptions)
+        {}
+
 		/// <summary>
 		/// TODO: Edmond
 		/// </summary>
