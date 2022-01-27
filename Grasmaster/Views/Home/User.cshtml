@@ -2,7 +2,7 @@
     
 *@
 @using Grasmaster.Infrastructure.Models
-@model IEnumerable<Product>
+@model IEnumerable<User>
 
 @{
     ViewData["Title"] = "Product";
@@ -13,11 +13,12 @@
         <th>Name</th>
         <th>Description</th>
     </tr>
-    @foreach (Product product in Model ?? throw new ArgumentNullException())
+    @foreach (User user in Model ?? throw new ArgumentNullException())
     {
         <tr>
-            <td>@product.Name</td>
-            <td>@product.Description</td>
+            <td>@user.Id</td>
+            <td>@user.Name</td>
+            <td>@user.Address</td>
         </tr>
     }
 </table>

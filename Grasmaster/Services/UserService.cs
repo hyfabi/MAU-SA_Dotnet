@@ -6,9 +6,9 @@ namespace Grasmaster.Services
 {
     public class UserService : IUserService
     {
-        ApplicationContext Context { get; init; }
+        ApplicationDbContext Context { get; init; }
 
-        public UserService(ApplicationContext context) => Context = context ?? throw new ArgumentNullException("ApplicationContext context is null!");
+        public UserService(ApplicationDbContext context) => Context = context ?? throw new ArgumentNullException("ApplicationContext context is null!");
 
         public Task AddUser(User user)
         {

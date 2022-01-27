@@ -7,5 +7,7 @@
 			
 		}
 		
+		public ulong CartId { get; set; }
+		public virtual Cart Cart { get; set; }
 	}
 }
