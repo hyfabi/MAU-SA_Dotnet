@@ -22,6 +22,7 @@ namespace Grasmaster.Infrastructure.Context
 		public ApplicationDbContext(DbContextOptions dbContextOptions) : base (dbContextOptions)
 		{}
 
+
 		/// <summary>
 		/// TODO: Edmond
 		/// </summary>
@@ -35,9 +36,6 @@ namespace Grasmaster.Infrastructure.Context
 			});
 			//Person
 			modelBuilder.Entity<Person>(entity => entity.HasBaseType<Entity>());
-
-			
-
 			
 			//Product
 			modelBuilder.Entity<Product>((entity) =>

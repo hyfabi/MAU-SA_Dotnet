@@ -1,23 +1,23 @@
 ﻿@*
-    
+	
 *@
 @using Grasmaster.Infrastructure.Models
 @model IEnumerable<Product>
 
 @{
-    ViewData["Title"] = "Product";
+	ViewData["Title"] = "Product";
 }
 
 <table cellpadding="0" cellspacing="0">
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-    </tr>
-    @foreach (Product product in Model ?? throw new ArgumentNullException())
-    {
-        <tr>
-            <td>@product.Name</td>
-            <td>@product.Description</td>
-        </tr>
-    }
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+	</tr>
+	@foreach (Product product in Model ?? throw new ArgumentNullException())
+	{
+		<tr>
+			<td>@product.Name</td>
+			<td>@product.Description</td>
+		</tr>
+	}
 </table>

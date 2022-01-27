@@ -17,13 +17,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options=> {
 });
 WebApplication app = builder.Build();
 
-IServiceScope? scope = app.Services.CreateScope();
+IServiceScope scope = app.Services.CreateScope() ?? throw new NullReferenceException();
 
 ApplicationDbContext dbcontext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
 dbcontext.Database.EnsureDeleted();
 dbcontext.Database.EnsureCreated();
-
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

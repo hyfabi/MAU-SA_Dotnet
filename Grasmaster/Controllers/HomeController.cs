@@ -36,20 +36,20 @@ namespace Grasmaster.Controllers
 
 		public IActionResult Product()
 		{
-			//DataSet ds = new DataSet();
-			//string constr = "Data Source=GrasmasterDB.db;";
-			//using (SqlConnection con = new(constr))
-			//{
-			//	string query = "SELECT * FROM Products";
-			//	using (SqlCommand cmd = new (query))
-			//	{
-			//		cmd.Connection = con;
-			//		using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-			//		{
-			//			sda.Fill(ds);
-			//		}
-			//	}
-			//}
+			/*DataSet ds = new DataSet();
+				//string constr = "Data Source=GrasmasterDB.db;";
+				//using (SqlConnection con = new(constr))
+				//{
+				//	string query = "SELECT * FROM Products";
+				//	using (SqlCommand cmd = new (query))
+				//	{
+				//		cmd.Connection = con;
+				//		using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+				//		{
+				//			sda.Fill(ds);
+				//		}
+				//	}
+			}*/
 			return View(new List<Product>() {
                 new(null){Name = "a", Description = "a"},
                 new(null){Name = "a1", Description = "a"},
