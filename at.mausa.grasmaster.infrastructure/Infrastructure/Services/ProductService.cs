@@ -28,9 +28,9 @@ namespace Grasmaster.Infrastructure.Services
             return p;
         }
 
-        public IReadOnlyList<Product> GetProducts()
+        public IReadOnlyList<Product> GetProducts(int count)
         {
-            return _applicationDbContext.Products.ToList();
+            return _applicationDbContext.Products.Take(count).ToList();
         }
 
         public object? GetService(Type serviceType)

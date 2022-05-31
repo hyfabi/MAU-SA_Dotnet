@@ -13,15 +13,14 @@ namespace Grasmaster.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly ILogger<HomeController> logger;
 
-		public IProductService? ProductService { get; set; }
+		private IProductService productService;
 
-		public SeedingService? SeedingService { get; set; }
-
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(ILogger<HomeController> logger, IProductService productService)
 		{
-			_logger = logger;
+			this.logger = logger;
+			this.productService = productService;
 		}
 
 		public IActionResult Index()
@@ -36,35 +35,7 @@ namespace Grasmaster.Controllers
 
 		public IActionResult Product()
 		{
-			/*DataSet ds = new DataSet();
-				//string constr = "Data Source=GrasmasterDB.db;";
-				//using (SqlConnection con = new(constr))
-				//{
-				//	string query = "SELECT * FROM Products";
-				//	using (SqlCommand cmd = new (query))
-				//	{
-				//		cmd.Connection = con;
-				//		using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-				//		{
-				//			sda.Fill(ds);
-				//		}
-				//	}
-			}*/
-			return View(new List<Product>() {
-                new(null){Name = "a", Description = "a"},
-                new(null){Name = "a1", Description = "a"},
-                new(null){Name = "a2", Description = "a"},
-                new(null){Name = "a3", Description = "a"},
-                new(null){Name = "a4", Description = "a"},
-                new(null){Name = "a5", Description = "a"},
-                new(null){Name = "a6", Description = "a"},
-                new(null){Name = "a7", Description = "a"},
-                new(null){Name = "a8", Description = "a"},
-                new(null){Name = "a9", Description = "a"},
-                new(null){Name = "a10", Description = "a"},
-                new(null){Name = "a11", Description = "a"},
-                new(null){Name = "a12", Description = "a"}
-			});
+			return View(productService.GetProducts(10));
 		}
 
 
