@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32113.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grasmaster", "Grasmaster.csproj", "{B3B39DEB-E44D-43A4-AA9A-B89D07526878}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "at.mausa.grasmaste.frontend", "at.mausa.grasmaste.frontend.csproj", "{B3B39DEB-E44D-43A4-AA9A-B89D07526878}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "at.mausa.grasmaster.domain", "..\at.mausa.grasmaster.domain\at.mausa.grasmaster.domain.csproj", "{D89751D3-C5FC-46CE-BD4C-21095598CFDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "at.mausa.grasmaster.infrastructure", "..\at.mausa.grasmaster.infrastructure\at.mausa.grasmaster.infrastructure.csproj", "{3BC696A0-CD1F-4751-AF17-0381DDA76453}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{B3B39DEB-E44D-43A4-AA9A-B89D07526878}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3B39DEB-E44D-43A4-AA9A-B89D07526878}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3B39DEB-E44D-43A4-AA9A-B89D07526878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D89751D3-C5FC-46CE-BD4C-21095598CFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D89751D3-C5FC-46CE-BD4C-21095598CFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D89751D3-C5FC-46CE-BD4C-21095598CFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D89751D3-C5FC-46CE-BD4C-21095598CFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BC696A0-CD1F-4751-AF17-0381DDA76453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BC696A0-CD1F-4751-AF17-0381DDA76453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BC696A0-CD1F-4751-AF17-0381DDA76453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BC696A0-CD1F-4751-AF17-0381DDA76453}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
