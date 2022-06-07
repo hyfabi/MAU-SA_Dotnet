@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\at.mausa.grasmaster.domain\at.mausa.grasmaster.domain.csproj" />
+    <ProjectReference Include="..\at.mausa.grasmaster.infrastructure\at.mausa.grasmaster.infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
