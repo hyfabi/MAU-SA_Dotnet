@@ -22,9 +22,7 @@ namespace Grasmaster.Infrastructure.Models
 			Name = name;
 		}
 		
-		public void UpdateAddress(Address address)
-		{
-            Address = address ?? throw new ArgumentNullException("Address is null or Empty!");
-		}
+		public void UpdateAddress(Address address) => Address = address ?? throw new ArgumentNullException("Address is null or Empty!");
+		
 	}
 }

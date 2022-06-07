@@ -1,5 +1,4 @@
 ﻿using Bogus;
-
 using Grasmaster.Infrastructure.Context;
 using Grasmaster.Infrastructure.Models;
 

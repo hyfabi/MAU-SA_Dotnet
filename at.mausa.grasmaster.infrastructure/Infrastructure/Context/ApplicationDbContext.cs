@@ -13,10 +13,7 @@ namespace Grasmaster.Infrastructure.Context
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			if (!optionsBuilder.IsConfigured)
-			{
-				///TODO: ...
-				optionsBuilder.UseSqlServer();
-			}
+				throw new Exception("Not Configured!");
 		}
 
 		public ApplicationDbContext(DbContextOptions dbContextOptions) : base (dbContextOptions)

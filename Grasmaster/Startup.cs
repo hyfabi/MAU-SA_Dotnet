@@ -22,11 +22,12 @@ namespace at.mausa.grasmaste.frontend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddSqlite<ApplicationDbContext>("Data Source=TestAdministrator.db");
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IProductService, ProductService>();
+            //services.AddSingleton<SeedingService>();
 
-            //services.ConfigureSqLite("Data Source=TestAdministrator.db");
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,47 +54,8 @@ namespace at.mausa.grasmaste.frontend
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
-
-            WebApplicationBuilder builder = WebApplication.CreateBuilder();
-
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-            //Add dbContext
-            string connString = builder.Configuration.GetConnectionString("MainConn");
-            builder.Services.AddDbContext<ApplicationDbContext>(options => {
-                options.UseSqlite("Data Source=GrasmasterDB.db;");
-            });
-            WebApplication app1 = builder.Build();
-
-            IServiceScope scope = app1.Services.CreateScope() ?? throw new NullReferenceException();
-
-            ApplicationDbContext dbcontext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-            dbcontext.Database.EnsureDeleted();
-            dbcontext.Database.EnsureCreated();
-
-            // Configure the HTTP request pipeline.
-            if (!app1.Environment.IsDevelopment())
-            {
-                app1.UseExceptionHandler("/Home/Error");
-                app1.UseHsts();
-            }
-
-            app1.UseHttpsRedirection();
-            app1.UseStaticFiles();
-
-            app1.UseRouting();
-
-            app1.UseAuthorization();
-
-            app1.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}"
-                );
-
-            app1.Run();
         }
     }
 }
