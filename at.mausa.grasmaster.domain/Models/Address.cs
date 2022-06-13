@@ -1,6 +1,4 @@
-﻿using At.Mausa.Grasmaster.Domain.Models.Domain;
-
-namespace At.Mausa.Grasmaster.Domain.Models.Domain {
+﻿namespace At.Mausa.Grasmaster.Domain.Models {
     public class Address : Entity {
         public string Street { get; set; } = string.Empty;
         public string Country { get; set; } = string.Empty;

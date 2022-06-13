@@ -16,9 +16,7 @@ public class Startup {
 		services.AddSqlite<ApplicationDbContext>("Data Source=TestAdministrator.db");
         services.AddTransient<IUserService, UserService>();
 		services.AddTransient<IProductService, ProductService>();
-		//services.AddTransient<ISeedingService,SeedingService>();
-
-
+		//services.AddSingleton<ISeedingService,SeedingService>();
 	}
 
 	// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
