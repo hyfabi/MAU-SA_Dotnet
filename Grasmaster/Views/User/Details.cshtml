@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Detial";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using At.Mausa.Grasmaster.Domain.Models
+@model User
+
+<span>GUID: @Model.Guid</span>
+<span>Email: @Model.Email</span>
+<span>Password: @Model.PasswordHash</span>
+
+<h6>Address</h6>
+<span>Street: @Model.Address.Street</span>
+<span>City: @Model.Address.City</span>
+<span>Country: @Model.Address.Country</span>
+
+<a href="..">Back</a>

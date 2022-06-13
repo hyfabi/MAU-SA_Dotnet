@@ -2,6 +2,7 @@
 using At.Mausa.Grasmaster.Infrastructure.Context;
 using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 
+using Microsoft.EntityFrameworkCore;
 
 using System.Linq;
 
@@ -25,28 +26,38 @@ namespace At.Mausa.Grasmaster.Infrastructure.Services {
 			return u;
 		}
 
-		public User DeleteUser(User user)
+		public User DeleteUser(Guid user)
 		{
-			if (!_applicationDbContext.User.Contains(user))
+			if (!_applicationDbContext.User.Where(u => u.Guid == user).Any())
 				throw new ArgumentException("User not found");
 
-			User u = _applicationDbContext.User.Remove(user).Entity;
+			User u = _applicationDbContext.User.Remove(_applicationDbContext.User.Where(u => u.Guid == user).First()).Entity;
 			_applicationDbContext.SaveChanges();
 			return u;
 		}
 
-		public IReadOnlyList<User> GetUsers()
+        public User GetUser(Guid user) {
+            if(!_applicationDbContext.User.Where(u => u.Guid == user).Any())
+                throw new ArgumentException("User not found");
+
+			return _applicationDbContext.User.Where(u => u.Guid == user).First();
+        }
+
+        public IReadOnlyList<User> GetUsers()
 		{
 			return _applicationDbContext.User.ToList();
 		}
 
-		public User UpdateUser(User user)
+		public User UpdateUser(Guid guid, User user)
 		{
-			if (!_applicationDbContext.User.Contains(user))
+			if (!_applicationDbContext.User.Where(u => u.Guid == guid).Any())
 				throw new ArgumentException("User not found");
 
-			User u = _applicationDbContext.User.Update(user).Entity;
-			_applicationDbContext.SaveChanges();
+			User u = _applicationDbContext.User.Where(u => u.Guid == guid).First();
+
+			u = user;
+
+            _applicationDbContext.SaveChanges();
 			return u;
 		}
 	}

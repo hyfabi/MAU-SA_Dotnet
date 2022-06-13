@@ -7,13 +7,18 @@ public class ApplicationDbContext : DbContext {
 	public virtual DbSet<User> User { get; set; }
 	public virtual DbSet<Product> Products { get; set; }
 	public virtual DbSet<Cart> InCart { get; set; }
+	public virtual DbSet<Address> Addresses { get; set; }
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
 		if(!optionsBuilder.IsConfigured)
 			throw new Exception("Not Configured!");
 	}
 
-	public ApplicationDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions) {}
+	public ApplicationDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions) {
+		//Database.EnsureDeleted();
+		//Database.EnsureCreated();
+
+	}
 
 
 	/// <summary>

@@ -4,6 +4,9 @@
 
         }
 
+        public string Email { get; set; }
+        public string PasswordHash { get; set; }
+
         public ulong? CartId { get; set; }
         public virtual Cart? Cart { get; set; }
     }

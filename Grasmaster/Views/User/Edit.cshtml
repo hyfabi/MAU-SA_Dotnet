@@ -1,0 +1,54 @@
+﻿
+@{
+	ViewData["Title"] = "View";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using At.Mausa.Grasmaster.Domain.Models;
+@model User
+
+<h1>Edit Product</h1>
+
+<form method="post">
+<span>GUID: @Model.Guid</span>
+<h1>Create</h1>
+<fieldset>
+	<legend>Add User</legend>
+	<div>
+		<label for="Email">E-Mail:</label>
+		<input id="Email" type="email" name="email" value="@Model.Email" />
+	</div>
+	<div>
+		<label for="Password">Password:</label>
+		<input id="Password" type="password" name="password" value="@Model.PasswordHash" />
+	</div>
+	<hr />
+
+	<h6>Person</h6>
+	<div>
+		<label for="name">Real Name:</label>
+		<input id="name" type="text" name="name" value="@Model.Name" />
+	</div>
+
+	<h6>Address</h6>
+	<div>
+		<label for="Street">Street:</label>
+		<input id="Street" type="text" name="street" value="@Model.Address.Street" />
+	</div>
+	<div>
+		<label for="City">City:</label>
+		<input id="City" type="text" name="city" value="@Model.Address.City" />
+	</div>
+	<div>
+		<label for="Country">Country:</label>
+		<input id="Country" type="text" name="country" value="@Model.Address.Country" />
+	</div>
+
+	<div>
+		<label>&nbsp;</label>
+		<input type="submit" value="Submit" class="submit" />
+		<input type="reset" value="Reset" class="submit" />
+	</div>
+	
+</fieldset>
+</form>
