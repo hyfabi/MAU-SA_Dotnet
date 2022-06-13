@@ -1,8 +1,5 @@
 ﻿using At.Mausa.Grasmaster.Domain.Models;
-using At.Mausa.Grasmaster.Infrastructure.Services;
 using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
-
-using Bogus.DataSets;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -79,7 +76,18 @@ public class ProductController : Controller {
 
     // GET: UserController/Delete/5
     public ActionResult Delete(string id) {
+        return View(productService.GetProduct(Guid.Parse(id)));
+    }
+
+    // POST: UserController/Delete/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Delete(string id, IFormCollection collection) {
         productService.DeleteProduct(Guid.Parse(id));
-        return RedirectToAction(nameof(Index));
+        try {
+            return RedirectToAction(nameof(Index));
+        } catch {
+            return View();
+        }
     }
 }
