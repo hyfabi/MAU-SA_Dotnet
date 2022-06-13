@@ -37,7 +37,7 @@ public class ProductController : Controller {
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Create(IFormCollection collection) {
-        userService.CreateUser(new(null, ""));
+        
 
         try {
             return RedirectToAction(nameof(Index));

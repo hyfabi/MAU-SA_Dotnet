@@ -1,4 +1,4 @@
-﻿using At.Mausa.Grasmaster.Domain.Models.Domain;
+﻿using At.Mausa.Grasmaster.Domain.Models;
 using At.Mausa.Grasmaster.Infrastructure.Context;
 using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 
@@ -6,7 +6,7 @@ using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 using System.Linq;
 
 namespace At.Mausa.Grasmaster.Infrastructure.Services {
-	public class UserService : IUserService
+    public class UserService : IUserService
 	{
 		private ApplicationDbContext _applicationDbContext;
 

@@ -1,13 +1,13 @@
 ﻿
 
-using At.Mausa.Grasmaster.Domain.Models.Domain;
+using At.Mausa.Grasmaster.Domain.Models;
 using At.Mausa.Grasmaster.Infrastructure.Context;
 using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace At.Mausa.Grasmaster.Infrastructure.Services {
-	public class ProductService : IProductService
+    public class ProductService : IProductService
 	{
 		private ApplicationDbContext _applicationDbContext;
 

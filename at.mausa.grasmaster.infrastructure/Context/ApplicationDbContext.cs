@@ -1,8 +1,8 @@
-﻿using At.Mausa.Grasmaster.Domain.Models.Domain;
+﻿using At.Mausa.Grasmaster.Domain.Models;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace At.Mausa.Grasmaster.Infrastructure.Context; 
+namespace At.Mausa.Grasmaster.Infrastructure.Context;
 public class ApplicationDbContext : DbContext {
     private DbSet<Entity> Entitys { get; set; }
     public DbSet<User> User { get; set; }

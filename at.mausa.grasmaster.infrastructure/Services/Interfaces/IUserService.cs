@@ -1,7 +1,7 @@
 ﻿
-using At.Mausa.Grasmaster.Domain.Models.Domain;
+using At.Mausa.Grasmaster.Domain.Models;
 
-namespace At.Mausa.Grasmaster.Infrastructure.Services.Interfaces; 
+namespace At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 public interface IUserService
 {
     public IReadOnlyList<User> GetUsers();

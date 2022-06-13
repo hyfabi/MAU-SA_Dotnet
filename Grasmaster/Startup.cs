@@ -35,11 +35,6 @@ public class Startup {
 
 		.UseEndpoints(endpoints => {
 			endpoints.MapControllerRoute(
-			name: "product",
-			pattern: "{controller=product}/{action=Index}/{id?}"
-            );
-
-			endpoints.MapControllerRoute(
 				name: "default",
 				pattern: "{controller=home}/{action=Index}/{id?}"
 			);
