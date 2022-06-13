@@ -13,7 +13,7 @@
 {
 	<h3>No Products</h3>
 }
-
+<a href="product/create">Create</a>
 <table cellpadding="5" cellspacing="5">
 	<tr>
 		<th>Name</th>
@@ -26,6 +26,8 @@
 		<tr>
 			<td>@product.Name</td>
 			<td>@product.Description</td>
+			<td><a href="product/edit/@product.Guid">Edit</a></td>
+			<td><a href="product/delete/@product.Guid">Delete</a></td>
 		</tr>
 	}
 	

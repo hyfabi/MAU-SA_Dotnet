@@ -1,0 +1,30 @@
+﻿
+@{
+	ViewData["Title"] = "View";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using At.Mausa.Grasmaster.Domain.Models;
+@model Product
+
+<h1>Edit Product</h1>
+
+<form method="post">
+<span>GUID: @Model.Guid</span>
+<fieldset>
+	<legend>Edit Product</legend>
+	<div>
+		<label for="Name">Name:</label>
+		<input id="Name" type="text" name="Name" value="@Model.Name" />
+	</div>
+	<div>
+		<label for="Description">Description:</label>
+		<input id="Description" type="text" name="Description" value="@Model.Description" />
+	</div>
+	<div>
+		<label>&nbsp;</label>
+		<input type="submit" value="Submit" class="submit" />
+	</div>
+</fieldset>
+</form>
+

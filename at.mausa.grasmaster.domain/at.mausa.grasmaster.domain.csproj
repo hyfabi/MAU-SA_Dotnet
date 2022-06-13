@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="NDbUnit.SqlLite" Version="1.6.8" />
-  </ItemGroup>
-
 </Project>

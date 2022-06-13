@@ -2,6 +2,8 @@
 using At.Mausa.Grasmaster.Infrastructure.Services;
 using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 
+using Bogus.DataSets;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace at.mausa.grasmaster.frontend.Controllers;
@@ -37,7 +39,7 @@ public class ProductController : Controller {
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Create(IFormCollection collection) {
-        
+        productService.CreateProduct(ParseProduct(collection));
 
         try {
             return RedirectToAction(nameof(Index));
@@ -46,15 +48,28 @@ public class ProductController : Controller {
         }
     }
 
-    // GET: UserController/Edit/5
-    public ActionResult Edit(int id) {
-        return View();
+    private Product ParseProduct(IFormCollection data){
+        string? desc = data["Description"];
+        string? name = data["Name"];
+
+        Product product = new(null) {
+            Description = desc ?? throw new NullReferenceException("Description should not be null"),
+            Name = name ?? throw new NullReferenceException("Name should not be null")
+        };
+        return product;
+    }
+
+    // GET: UserController/Edit/as5-sasda-asd
+    public ActionResult Edit(string id) {
+        return View(productService.GetProduct(Guid.Parse(id)));
     }
 
     // POST: UserController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection) {
+    public ActionResult Edit(string id, IFormCollection collection) {
+
+        productService.UpdateProduct(Guid.Parse(id), ParseProduct(collection));
         try {
             return RedirectToAction(nameof(Index));
         } catch {
@@ -63,19 +78,8 @@ public class ProductController : Controller {
     }
 
     // GET: UserController/Delete/5
-    public ActionResult Delete(int id) {
-        return View();
+    public ActionResult Delete(string id) {
+        productService.DeleteProduct(Guid.Parse(id));
+        return RedirectToAction(nameof(Index));
     }
-
-    // POST: UserController/Delete/5
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection) {
-        try {
-            return RedirectToAction(nameof(Index));
-        } catch {
-            return View();
-        }
-    }
-
 }

@@ -9,7 +9,7 @@ namespace At.Mausa.Grasmaster.Domain.Models {
         public Guid? Guid { get; set; }
 
         protected Entity(Guid? guid) {
-            Guid = guid;
+            Guid = guid ?? System.Guid.NewGuid();
         }
     }
 }
