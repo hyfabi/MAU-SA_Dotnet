@@ -8,6 +8,11 @@
 	ViewData["Title"] = "Product";
 }
 
+@if (Model.Count<User>() == 0)
+{
+	<h3>No User</h3>
+}
+
 <table cellpadding="5" cellspacing="5">
 	<tr>
 		<th>ID</th>

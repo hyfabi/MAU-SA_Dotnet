@@ -8,11 +8,19 @@
 	ViewData["Title"] = "Product";
 }
 
-<table cellpadding="0" cellspacing="0">
+
+@if (Model.Count<Product>() == 0)
+{
+	<h3>No Products</h3>
+}
+
+<table cellpadding="5" cellspacing="5">
 	<tr>
 		<th>Name</th>
 		<th>Description</th>
 	</tr>
+
+	
 	@foreach (Product product in Model ?? throw new ArgumentNullException())
 	{
 		<tr>
@@ -20,4 +28,5 @@
 			<td>@product.Description</td>
 		</tr>
 	}
+	
 </table>
