@@ -1,5 +1,4 @@
-﻿namespace Grasmaster.Infrastructure.Models
-{
+﻿namespace At.Mausa.Grasmaster.Domain.Models.Domain {
 	public class Product : Entity
 	{
 		public Product(Guid? guid) : base(guid){}

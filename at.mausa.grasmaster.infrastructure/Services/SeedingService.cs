@@ -1,11 +1,13 @@
-﻿using Bogus;
-using Grasmaster.Infrastructure.Context;
-using Grasmaster.Infrastructure.Models;
+﻿
 
-namespace Grasmaster.Infrastructure.Services
-{
+using At.Mausa.Grasmaster.Infrastructure.Context;
+using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
+
+using Bogus;
+
+namespace At.Mausa.Grasmaster.Infrastructure.Services {
 	/// <summary>Seeding Service</summary>
-	public class SeedingService
+	public class SeedingService : ISeedingService
 	{
 		private ApplicationDbContext _applicationContext;
 		private Faker _faker;
@@ -32,6 +34,7 @@ namespace Grasmaster.Infrastructure.Services
 				_applicationContext.SaveChanges();
 		}
 
+		
 		public void CreateUser(uint cout, bool saveAfter)
 		{
 			for (int i = 0; i < cout; i++)

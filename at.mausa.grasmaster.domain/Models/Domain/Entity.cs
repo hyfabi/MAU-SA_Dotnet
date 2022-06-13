@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Grasmaster.Infrastructure.Models
-{
+namespace At.Mausa.Grasmaster.Domain.Models.Domain {
 	public abstract class Entity
 	{
 		[Key]

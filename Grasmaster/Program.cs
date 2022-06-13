@@ -1,6 +1,4 @@
-using at.mausa.grasmaste.frontend;
-using Grasmaster.Controllers;
-using Grasmaster.Infrastructure.Context;
+using At.Mausa.Grasmaster.Frontend;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,4 +10,6 @@ CreateHostBuilder(args).Build().Run();
 
 IHostBuilder CreateHostBuilder(string[] args) =>
 Host.CreateDefaultBuilder(args)
-    .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+    .ConfigureWebHostDefaults(webBuilder => {
+        webBuilder.UseStartup<Startup>();
+    });

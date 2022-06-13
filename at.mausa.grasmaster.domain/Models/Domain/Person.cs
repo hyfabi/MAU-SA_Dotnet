@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using At.Mausa.Grasmaster.Domain.Models.Domain;
+
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 
-namespace Grasmaster.Infrastructure.Models
-{
-	public abstract class Person : Entity
+namespace At.Mausa.Grasmaster.Domain.Models.Domain {
+    public abstract class Person : Entity
 	{
 		[Required]
 		public string Name { get; set; } = "";

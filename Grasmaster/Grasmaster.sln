@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32113.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "at.mausa.grasmaste.frontend", "at.mausa.grasmaste.frontend.csproj", "{B3B39DEB-E44D-43A4-AA9A-B89D07526878}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "At.Mausa.Grasmaster.Frontend", "At.Mausa.Grasmaster.Frontend.csproj", "{B3B39DEB-E44D-43A4-AA9A-B89D07526878}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "at.mausa.grasmaster.domain", "..\at.mausa.grasmaster.domain\at.mausa.grasmaster.domain.csproj", "{D89751D3-C5FC-46CE-BD4C-21095598CFDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "At.Mausa.Grasmaster.Domain", "..\at.mausa.grasmaster.domain\At.Mausa.Grasmaster.Domain.csproj", "{D89751D3-C5FC-46CE-BD4C-21095598CFDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "at.mausa.grasmaster.infrastructure", "..\at.mausa.grasmaster.infrastructure\at.mausa.grasmaster.infrastructure.csproj", "{3BC696A0-CD1F-4751-AF17-0381DDA76453}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "At.Mausa.Grasmaster.Infrastructure", "..\at.mausa.grasmaster.infrastructure\At.Mausa.Grasmaster.Infrastructure.csproj", "{3BC696A0-CD1F-4751-AF17-0381DDA76453}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

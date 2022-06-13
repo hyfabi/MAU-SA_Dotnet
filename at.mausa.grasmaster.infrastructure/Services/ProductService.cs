@@ -1,11 +1,12 @@
-﻿using Grasmaster.Infrastructure.Context;
-using Grasmaster.Infrastructure.Models;
-using Grasmaster.Infrastructure.Services.Interfaces;
+﻿
+
+using At.Mausa.Grasmaster.Domain.Models.Domain;
+using At.Mausa.Grasmaster.Infrastructure.Context;
+using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Grasmaster.Infrastructure.Services
-{
+namespace At.Mausa.Grasmaster.Infrastructure.Services {
 	public class ProductService : IProductService
 	{
 		private ApplicationDbContext _applicationDbContext;
@@ -28,9 +29,9 @@ namespace Grasmaster.Infrastructure.Services
             return p;
         }
 
-        public IReadOnlyList<Product> GetProducts(int count)
+        public IQueryable<Product> GetProducts(int count)
         {
-            return _applicationDbContext.Products.Take(count).ToList();
+            return _applicationDbContext.Products;
         }
 
         public object? GetService(Type serviceType)

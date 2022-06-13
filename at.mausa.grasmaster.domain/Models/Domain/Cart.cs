@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Grasmaster.Infrastructure.Models
-{
+namespace At.Mausa.Grasmaster.Domain.Models.Domain {
 	public class Cart : Entity
 	{
 		public Cart(Guid? guid) : base(guid)
