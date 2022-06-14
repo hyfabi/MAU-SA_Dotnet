@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "At.Mausa.Grasmaster.Domain"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "At.Mausa.Grasmaster.Infrastructure", "..\at.mausa.grasmaster.infrastructure\At.Mausa.Grasmaster.Infrastructure.csproj", "{3BC696A0-CD1F-4751-AF17-0381DDA76453}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "At.Mausa.Grasmaster.Test", "..\At.Mausa.Grasmaster.Test\At.Mausa.Grasmaster.Test.csproj", "{EBB168BA-1BC6-48E0-B677-153F7505912C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3BC696A0-CD1F-4751-AF17-0381DDA76453}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BC696A0-CD1F-4751-AF17-0381DDA76453}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BC696A0-CD1F-4751-AF17-0381DDA76453}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBB168BA-1BC6-48E0-B677-153F7505912C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB168BA-1BC6-48E0-B677-153F7505912C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB168BA-1BC6-48E0-B677-153F7505912C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB168BA-1BC6-48E0-B677-153F7505912C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
