@@ -18,6 +18,7 @@
 	<tr>
 		<th>Name</th>
 		<th>Description</th>
+		<th>Art</th>
 	</tr>
 
 	
@@ -26,6 +27,7 @@
 		<tr>
 			<td>@product.Name</td>
 			<td>@product.Description</td>
+			<td>@product.ProductType.ToString()</td>
 			<td><a href="product/edit/@product.Guid">Edit</a></td>
 			<td><a href="product/delete/@product.Guid">Delete</a></td>
 		</tr>

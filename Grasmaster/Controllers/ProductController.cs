@@ -1,9 +1,10 @@
 ﻿using At.Mausa.Grasmaster.Domain.Models;
+using At.Mausa.Grasmaster.Infrastructure;
 using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace at.mausa.grasmaster.frontend.Controllers;
+namespace At.Mausa.Grasmaster.Frontend.Controllers;
 
 public class ProductController : Controller {
 
@@ -16,8 +17,8 @@ public class ProductController : Controller {
         this.logger = logger;
     }
 
-    public IActionResult Index(){
-        IQueryable<Product> products = productService.GetProducts(10);
+    public IActionResult Index() {
+        List<Product> products = productService.GetProducts();
 
         return View(products.ToList());
     }
@@ -29,7 +30,7 @@ public class ProductController : Controller {
 
     // GET: UserController/Create
     public ActionResult Create() {
-        return View();
+        return View(Product.AllProductTypeValues);
     }
 
     // POST: UserController/Create
@@ -45,20 +46,22 @@ public class ProductController : Controller {
         }
     }
 
-    private Product ParseProduct(IFormCollection data){
+    private Product ParseProduct(IFormCollection data) {
         string? desc = data["Description"];
         string? name = data["Name"];
+        ProductType? type = (ProductType?)Enum.Parse(typeof(ProductType), data["art"]);
 
         Product product = new(null) {
             Description = desc ?? throw new NullReferenceException("Description should not be null"),
-            Name = name ?? throw new NullReferenceException("Name should not be null")
+            Name = name ?? throw new NullReferenceException("Name should not be null"),
+            ProductType = type ?? throw new NullReferenceException("Type should not be null")
         };
         return product;
     }
 
     // GET: UserController/Edit/as5-sasda-asd
     public ActionResult Edit(string id) {
-        return View(productService.GetProduct(Guid.Parse(id)));
+        return View(new Tuple<Product, List<ProductType>>(productService.GetProduct(Guid.Parse(id)), Product.AllProductTypeValues));
     }
 
     // POST: UserController/Edit/5

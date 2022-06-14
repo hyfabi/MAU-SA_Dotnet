@@ -5,22 +5,35 @@
 }
 
 @using At.Mausa.Grasmaster.Domain.Models;
-@model Product
+@model Tuple<Product, List<ProductType>>
 
 <h1>Edit Product</h1>
 
 <form method="post">
-<span>GUID: @Model.Guid</span>
+<span>GUID: @Model.Item1.Guid</span>
 <fieldset>
 	<legend>Edit Product</legend>
 	<div>
 		<label for="Name">Name:</label>
-		<input id="Name" type="text" name="Name" value="@Model.Name" />
+		<input id="Name" type="text" name="Name" value="@Model.Item1.Name" />
 	</div>
 	<div>
 		<label for="Description">Description:</label>
-		<input id="Description" type="text" name="Description" value="@Model.Description" />
+		<input id="Description" type="text" name="Description" value="@Model.Item1.Description" />
 	</div>
+	<div>
+		<label for="art">Produktart:</label>
+		<select id="art" name="art" >
+			@foreach (ProductType item in Model.Item2){
+				@if(Model.Item1.ProductType == item){
+					<option value="@item" selected>@item</option>
+				}else{
+					<option value="@item">@item</option>
+				}
+			}
+		</select>
+	</div>
+
 	<div>
 		<label>&nbsp;</label>
 		<input type="submit" value="Submit" class="submit" />

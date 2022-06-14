@@ -6,6 +6,8 @@ using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
+using System.Linq.Expressions;
+
 namespace At.Mausa.Grasmaster.Infrastructure.Services {
 	public class ProductService : IProductService
 	{
@@ -30,16 +32,32 @@ namespace At.Mausa.Grasmaster.Infrastructure.Services {
 			return p;
 		}
 
-        public Product GetProduct(Guid guid) {
+		public Product GetProduct(Guid guid) {
 			if(_applicationDbContext.Products.Where(p => p.Guid == guid).Any())
 				return _applicationDbContext.Products.Where(p => p.Guid == guid).First();
 			else
 				throw new ArgumentException("No correct GUID found");
-        }
+		}
 
-        public IQueryable<Product> GetProducts(int count)
+		public List<Product> GetProducts(Expression<Func<Product, bool>>? filter = null,
+		Func<IQueryable<Product>, IOrderedQueryable<Product>>? sortOrder = null,
+		Func<IQueryable<Product>, PagenatedList<Product>>? paging = null)
 		{
-			return _applicationDbContext.Products;
+			IQueryable<Product> result = _applicationDbContext.Products;
+
+            if(filter is not null) {
+                result = result.Where(filter);
+            }
+
+            if(sortOrder is not null) {
+                result = sortOrder(result);
+            }
+
+            if(paging is not null) {
+                return paging(result);
+            }
+
+			return result.ToList();
 		}
 
 		public object? GetService(Type serviceType)
@@ -53,10 +71,12 @@ namespace At.Mausa.Grasmaster.Infrastructure.Services {
 				throw new ArgumentException("Product not found");
 
 			Product p = _applicationDbContext.Products.Where(p => p.Guid == guid).First();
+
 			p.Name = product.Name;
 			p.Description = product.Description;
+			p.ProductType = product.ProductType;
 
-            _applicationDbContext.SaveChanges();
+			_applicationDbContext.SaveChanges();
 			return p;
 		}
 	}

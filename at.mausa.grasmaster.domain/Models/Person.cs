@@ -8,8 +8,6 @@ namespace At.Mausa.Grasmaster.Domain.Models {
 
         public Address Address { get; set; } = default!;
 
-        public int AddressId { get; set; }
-
         protected Person(Guid? guid, string name) : base(guid) {
             Name = name;
         }

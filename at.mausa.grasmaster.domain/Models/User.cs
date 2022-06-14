@@ -4,8 +4,8 @@
 
         }
 
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
+        public string Email { get; set; } = default!;
+        public string PasswordHash { get; set; } = default!;
 
         public ulong? CartId { get; set; }
         public virtual Cart? Cart { get; set; }

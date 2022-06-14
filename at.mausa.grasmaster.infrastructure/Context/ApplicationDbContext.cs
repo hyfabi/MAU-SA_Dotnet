@@ -15,10 +15,7 @@ public class ApplicationDbContext : DbContext {
 	}
 
 	public ApplicationDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions) {
-		//Database.EnsureDeleted();
-		//Database.EnsureCreated();
-
-	}
+    }
 
 
 	/// <summary>
@@ -38,6 +35,8 @@ public class ApplicationDbContext : DbContext {
 		//Product
 		modelBuilder.Entity<Product>((entity) => {
 			entity.HasBaseType<Entity>();
+			//entity.Property(p => p.ProductType)
+			//.HasConversion(p => p.ToString(), p => (ProductType)Enum.Parse(typeof(ProductType), p));
 		});
 
 		//InCart

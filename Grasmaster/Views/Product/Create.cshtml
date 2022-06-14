@@ -4,6 +4,9 @@
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using At.Mausa.Grasmaster.Domain.Models
+@model List<ProductType>
+
 <h1>Create</h1>
 
 <form method="post" >
@@ -16,6 +19,14 @@
 	<div>
 		<label for="Description">Description:</label>
 		<input type="text" name="Description" value="" />
+	</div>
+	<div>
+		<label for="art">Produktart:</label>
+		<select id="art" name="art">
+			@foreach (ProductType item in Model){
+				<option value="@item">@item</option>
+			}
+		</select>
 	</div>
 	<div>
 		<label>&nbsp;</label>

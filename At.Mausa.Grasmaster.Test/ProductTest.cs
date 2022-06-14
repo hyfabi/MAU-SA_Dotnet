@@ -11,15 +11,16 @@ namespace At.Mausa.Grasmaster.Test
 {
     public class ProductTest
     {
+        
         [Fact]
         public async Task Test()
         {
-            var db = getDbContext();
+            var db = GetDbContext();
             ProductService service = new ProductService(db);
-            Assert.True(service.GetProducts(10).ToList().Count() > 0);
+            Assert.True(service.GetProducts().ToList().Count() > 0);
         }
 
-        private ApplicationDbContext getDbContext()
+        public static ApplicationDbContext GetDbContext()
         {
             var options = new DbContextOptionsBuilder().UseSqlite("Data Source=TestAdministrator.db");
             var db = new ApplicationDbContext(options.Options);
