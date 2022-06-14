@@ -7,7 +7,6 @@ public class ApplicationDbContext : DbContext {
 	public virtual DbSet<User> User { get; set; }
 	public virtual DbSet<Product> Products { get; set; }
 	public virtual DbSet<Cart> InCart { get; set; }
-	public virtual DbSet<Address> Addresses { get; set; }
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
 		if(!optionsBuilder.IsConfigured)
@@ -15,6 +14,8 @@ public class ApplicationDbContext : DbContext {
 	}
 
 	public ApplicationDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions) {
+		//Database.EnsureDeleted();
+		//Database.EnsureCreated();
     }
 
 
@@ -30,13 +31,15 @@ public class ApplicationDbContext : DbContext {
 		});
 
 		//Person
-		modelBuilder.Entity<Person>(entity => entity.HasBaseType<Entity>());
+		modelBuilder.Entity<Person>(entity => {
+			entity.HasBaseType<Entity>();
+            entity.Property(p => p.Address)
+            .HasConversion(p => p.ToString(), a => Address.ConvertAddress(a));
+        });
 
 		//Product
 		modelBuilder.Entity<Product>((entity) => {
 			entity.HasBaseType<Entity>();
-			//entity.Property(p => p.ProductType)
-			//.HasConversion(p => p.ToString(), p => (ProductType)Enum.Parse(typeof(ProductType), p));
 		});
 
 		//InCart
@@ -46,14 +49,8 @@ public class ApplicationDbContext : DbContext {
 			entity.HasOne(x => x.User);
 		});
 
-		//Address
-		modelBuilder.Entity<Address>((entity) => {
-			entity.HasBaseType<Entity>();
-		});
-
 		//User
 		modelBuilder.Entity<User>((entity) => {
-			entity.HasOne(x => x.Address);
 			entity.HasBaseType<Person>();
 			entity.HasOne(x => x.Cart)
 			.WithOne(x => x.User)

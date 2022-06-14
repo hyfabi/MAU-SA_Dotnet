@@ -20,9 +20,9 @@
 	@foreach (User user in Model ?? throw new ArgumentNullException())
 	{
 		<tr>
-			<td><a href="user/details/@user.Guid">@user.Name</a></td>
-			<td><a href="user/edit/@user.Guid">Edit</a></td>
-			<td><a href="user/delete/@user.Guid">Delete</a></td>
+			<td><a href="/user/details/@user.Guid">@user.Name</a></td>
+			<td><a href="/user/edit/@user.Guid">Edit</a></td>
+			<td><a href="/user/delete/@user.Guid">Delete</a></td>
 		</tr>
 	}
 </table>
