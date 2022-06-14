@@ -13,7 +13,10 @@ public class ApplicationDbContext : DbContext {
 			throw new Exception("Not Configured!");
 	}
 
-	public ApplicationDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions) {}
+	public ApplicationDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions) {
+		Database.EnsureDeleted();
+		Database.EnsureCreated();
+	}
 
 
 	/// <summary>
