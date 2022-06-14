@@ -2,17 +2,38 @@
 	
 *@
 @using At.Mausa.Grasmaster.Domain.Models;
-@model IEnumerable<Product>
+@model Tuple<List<Product>, int, int>
 
 @{
 	ViewData["Title"] = "Product";
+	var nextP = Model.Item2 + 1;
+	var previous = Model.Item2 -1;
+
+	var nexH = nextP == Model.Item3;
+	var nH = Model.Item2 == 0;
 }
 
-
-@if (Model.Count<Product>() == 0)
+@if (Model.Item1.Count<Product>() == 0)
 {
-	<h3>No Products</h3>
+	<h3>No Product</h3>
 }
+
+<a href="product?sort=name">Sort by name</a>
+<a href="product?sort=name_desc">Sort by name desc</a>
+<a href="product?sort=desc">Sort by description</a>
+<a href="product?sort=desc_desc">Sort by description desc</a>
+<br />
+<a href="product?page=@nextP" hidden="@nexH">Next Page</a>
+<a href="product?page=@previous" hidden="@nH">Previos Page</a>
+<br />
+<form method="get" action="/product">
+	<label>Filter by Name</label>
+	<input type="text" name="filter" />
+	<br />
+	<input type="button" value="Filter"/>
+</form>
+
+<br />
 <a href="product/create">Create</a>
 <table cellpadding="5" cellspacing="5">
 	<tr>
@@ -22,7 +43,7 @@
 	</tr>
 
 	
-	@foreach (Product product in Model ?? throw new ArgumentNullException())
+	@foreach (Product product in Model.Item1 ?? throw new ArgumentNullException())
 	{
 		<tr>
 			<td>@product.Name</td>

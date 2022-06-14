@@ -25,12 +25,10 @@ public class PagenatedList<T> : List<T> {
 
     public static PagenatedList<T> Create(IQueryable<T> source, int pageIndex, int pageSize) {
         var count = source.Count();
-
         var items = source
-            .Skip((pageIndex - 1) * pageSize)
+            .Skip(pageIndex * pageSize)
             .Take(pageSize)
             .ToList();
-
         return new PagenatedList<T>(items, count, pageIndex, pageSize);
     }
 

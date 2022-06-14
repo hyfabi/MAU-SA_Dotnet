@@ -40,7 +40,7 @@ public class Startup {
 				name: "default",
 				pattern: "{controller=home}/{action=Index}/{id?}"
 			);
-		});
+        });
 	}
 }
 

@@ -4,6 +4,8 @@ using At.Mausa.Grasmaster.Infrastructure.Services.Interfaces;
 
 using Microsoft.AspNetCore.Mvc;
 
+using System.Linq.Expressions;
+
 namespace At.Mausa.Grasmaster.Frontend.Controllers;
 
 public class ProductController : Controller {
@@ -17,10 +19,39 @@ public class ProductController : Controller {
         this.logger = logger;
     }
 
-    public IActionResult Index() {
-        List<Product> products = productService.GetProducts();
+    public IActionResult Index(string filter, string sort, int page) {
 
-        return View(products.ToList());
+        Expression<Func<Product, bool>> filterExprssion = null;
+
+        if(!string.IsNullOrEmpty(filter)) {
+            filterExprssion = s => s.Name.Contains(filter);
+        }
+
+        Func<IQueryable<Product>, IOrderedQueryable<Product>> orderExpression = default;
+        switch(sort) {
+            case "name":
+            orderExpression = (s) => s.OrderBy(s => s.Name);
+            break;
+            case "name_desc":
+            orderExpression = s => s.OrderByDescending(s => s.Name);
+            break;
+            case "desc":
+            orderExpression = s => s.OrderBy(s => s.Description);
+            break;
+            case "desc_desc":
+            orderExpression = s => s.OrderByDescending(s => s.Description);
+            break;
+            default:
+            goto case "name";
+        }
+
+        Func<IQueryable<Product>, PagenatedList<Product>> pagingExpression = result => PagenatedList<Product>.Create(result, page, 2);
+
+        List<Product> model = productService.GetProducts(filterExprssion, orderExpression, pagingExpression);
+
+        
+
+        return View(new Tuple<List<Product>, int, int>(model.ToList(), ((model as PagenatedList<Product>)?.PageIndex ?? 0), (model as PagenatedList<Product>)?.TotalPages ?? 0));
     }
 
     // GET: UserController/Details/5
